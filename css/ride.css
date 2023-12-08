@@ -57,12 +57,11 @@ html, body, #main, #map {
 }
 
 .weather-panel {
-    background-color: hsl(200, 100%, 85%);
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    margin-left: 10px;
-    margin-bottom: 10px;
-    width: 25%;
-    height: 275px;
+    /* background-color: hsl(200, 100%, 85%); */
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    z-index: 100;
+    width: 275px;
+    background: transparent;
 }
