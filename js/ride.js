@@ -1,4 +1,5 @@
 /*global WildRydes _config*/
+<script type="module" src="./ride.js"></script>
 
 import { getWeather } from "./weather"
 
