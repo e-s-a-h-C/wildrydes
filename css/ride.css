@@ -58,9 +58,11 @@ html, body, #main, #map {
 
 .weather-panel {
     background-color: hsl(200, 100%, 85%);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 275px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    width: 25%;
     height: 275px;
 }
