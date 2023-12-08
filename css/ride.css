@@ -62,6 +62,6 @@ html, body, #main, #map {
     left: 10px;
     bottom: 10px;
     z-index: 100;
-    width: 275px;
+    width: 10%;
     background: transparent;
 }
