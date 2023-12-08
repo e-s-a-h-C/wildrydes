@@ -58,10 +58,11 @@ html, body, #main, #map {
 
 .weather-panel {
     /* background-color: hsl(200, 100%, 85%); */
-    position: relative;
-    left: 10px;
-    bottom: 10px;
-    height: 10px;
-    width: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 275px;
+    width: 275px;
+    z-index: 150;
     background: transparent;
 }
