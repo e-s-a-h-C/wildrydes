@@ -80,8 +80,8 @@ function renderCurrentWeather(current) {
         //  get the local weather, find nearby restaurants, movies
         // getWeather(pickupLocation, unicorn)
         getWeather(
-            coords.latitude,
-            coords.longitude,
+            pickupLocation.latitude,
+            pickupLocation.longitude,
             Intl.DateTimeFormat().resolvedOptions().timeZone
           )
             .then(renderWeather)
