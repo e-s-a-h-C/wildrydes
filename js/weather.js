@@ -1,13 +1,13 @@
 import axios from "axios"
 
-export function getWeather(lat, lon, timezone) {
+export function getWeather({ pickupLoc }, timezone) {
   return axios
     .get(
       "https://api.open-meteo.com/v1/forecast?hourly=temperature_2m,apparent_temperature,precipitation,weathercode,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_sum&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timeformat=unixtime",
       {
         params: {
-          latitude: lat,
-          longitude: lon,
+          latitude: pickupLoc.latitude,
+          longitude: pickupLoc.longitude,
           timezone,
         },
       }
@@ -46,3 +46,26 @@ function parseCurrentWeather({ current_weather, daily }) {
   }
 }
 
+function renderWeather({ current }) {
+  renderCurrentWeather(current)
+}
+
+function setValue(selector, value, { parent = document } = {}) {
+  parent.querySelector(`[data-${selector}]`).textContent = value
+}
+
+function getIconUrl(iconCode) {
+  return `icons/${ICON_MAP.get(iconCode)}.svg`
+}
+
+const currentIcon = document.querySelector("[data-current-icon]")
+function renderCurrentWeather(current) {
+  currentIcon.src = getIconUrl(current.iconCode)
+  setValue("current-temp", current.currentTemp)
+  setValue("current-high", current.highTemp)
+  setValue("current-low", current.lowTemp)
+  setValue("current-fl-high", current.highFeelsLike)
+  setValue("current-fl-low", current.lowFeelsLike)
+  setValue("current-wind", current.windSpeed)
+  setValue("current-precip", current.precip)
+}

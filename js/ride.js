@@ -3,30 +3,6 @@ var WildRydes = window.WildRydes || {};
 WildRydes.map = WildRydes.map || {};
 let map;
 
-function renderWeather({ current }) {
-    renderCurrentWeather(current)
-}
-
-function setValue(selector, value, { parent = document } = {}) {
-    parent.querySelector(`[data-${selector}]`).textContent = value
-}
-  
-function getIconUrl(iconCode) {
-    return `icons/${ICON_MAP.get(iconCode)}.svg`
-}
-  
-const currentIcon = document.querySelector("[data-current-icon]")
-function renderCurrentWeather(current) {
-    currentIcon.src = getIconUrl(current.iconCode)
-    setValue("current-temp", current.currentTemp)
-    setValue("current-high", current.highTemp)
-    setValue("current-low", current.lowTemp)
-    setValue("current-fl-high", current.highFeelsLike)
-    setValue("current-fl-low", current.lowFeelsLike)
-    setValue("current-wind", current.windSpeed)
-    setValue("current-precip", current.precip)
-}
-
 (function rideScopeWrapper($) {
     var authToken;
     WildRydes.authToken.then(function setAuthToken(token) {
@@ -120,26 +96,26 @@ function renderCurrentWeather(current) {
         //  put the map behind the updates list
         document.getElementById("map").style.zIndex = "10";
 
-        // function setLocation(loc) {
-        //     map = L.map('map').setView([loc.coords.latitude, loc.coords.longitude], 13);
-        //     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        //         maxZoom: 19,
-        //         attribution: '© OpenStreetMap'
-        //     }).addTo(map);
+        function setLocation(loc) {
+            map = L.map('map').setView([loc.coords.latitude, loc.coords.longitude], 13);
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap'
+            }).addTo(map);
 
-        //     WildRydes.map.center = {latitude: loc.coords.latitude, longitude: loc.coords.longitude};
-        //     let b = map.getBounds();        //  TODO moved
-        //     WildRydes.map.extent = {minLat: b._northEast.lat, minLng: b._northEast.lng,
-        //         maxLat: b._southWest.lat, maxLng: b._southWest.lng};
+            WildRydes.map.center = {latitude: loc.coords.latitude, longitude: loc.coords.longitude};
+            let b = map.getBounds();        //  TODO moved
+            WildRydes.map.extent = {minLat: b._northEast.lat, minLng: b._northEast.lng,
+                maxLat: b._southWest.lat, maxLng: b._southWest.lng};
 
-        //     WildRydes.marker  = L.marker([loc.coords.latitude, loc.coords.longitude]).addTo(map);
-        //     var myIcon = L.icon({
-        //         iconUrl: 'images/unicorn-icon.png',
-        //         iconSize: [25, 25],
-        //         iconAnchor: [22, 24],
-        //         shadowSize: [25, 25],
-        //         shadowAnchor: [22, 24]
-        //     });
+            WildRydes.marker  = L.marker([loc.coords.latitude, loc.coords.longitude]).addTo(map);
+            var myIcon = L.icon({
+                iconUrl: 'images/unicorn-icon.png',
+                iconSize: [25, 25],
+                iconAnchor: [22, 24],
+                shadowSize: [25, 25],
+                shadowAnchor: [22, 24]
+            });
             WildRydes.unicorn = L.marker([loc.coords.latitude, loc.coords.longitude], {icon: myIcon}).addTo(map);
             // WildRydes.marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
 
