@@ -1,5 +1,4 @@
 /*global WildRydes _config*/
-import "./ride.css"
 import { getWeather } from "./weather"
 
 var WildRydes = window.WildRydes || {};
