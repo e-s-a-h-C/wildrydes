@@ -98,6 +98,7 @@ html, body, #main, #map {
     gap: 0.5rem;
     grid-template-columns: repeat(6, auto);
     grid-template-rows: repeat(1, auto);
+    margin-top: 10px;
   }
 
   .info-group {
