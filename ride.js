@@ -4,28 +4,26 @@ var WildRydes = window.WildRydes || {};
 WildRydes.map = WildRydes.map || {};
 let map;
 
-//import axios from "axios"
-const apiurl = 'https://api.open-meteo.com/v1/forecast?hourly=temperature_2m,apparent_temperature,precipitation,weathercode,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_sum&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timeformat=unixtime'
+import axios from "axios"
 function getWeather(lat, lon, timezone) {
-    params: {
-        latitude = lat,
-        longitude = lon,
-        timezone,
-    }
-
-    fetch(apiurl)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+    return axios
+      .get(
+        "https://api.open-meteo.com/v1/forecast?hourly=temperature_2m,apparent_temperature,precipitation,weathercode,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_sum&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timeformat=unixtime",
+        {
+          params: {
+            latitude: lat,
+            longitude: lon,
+            timezone,
+          },
         }
-        return response.json();
-    })
-    .then(data => {
+      )
+      .then(({ data }) => {
         return {
-            current: parseCurrentWeather(data),
+          current: parseCurrentWeather(data),
+          daily: parseDailyWeather(data),
         }
-    })
-}
+      })
+  }
 
 function parseCurrentWeather({ current_weather, daily }) {
   const {
