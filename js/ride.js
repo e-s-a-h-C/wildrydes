@@ -1,7 +1,6 @@
 /*global WildRydes _config*/
-<script type="module" src="./ride.js"></script>
 
-import { getWeather } from "./weather"
+import { getWeather } from ".js/weather.js"
 
 var WildRydes = window.WildRydes || {};
 WildRydes.map = WildRydes.map || {};
