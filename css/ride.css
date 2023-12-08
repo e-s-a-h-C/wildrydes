@@ -63,6 +63,6 @@ html, body, #main, #map {
     bottom: 0;
     height: 275px;
     width: 275px;
-    z-index: 150;
+    z-index: 1;
     background: transparent;
 }
