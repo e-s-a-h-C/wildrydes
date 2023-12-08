@@ -59,10 +59,10 @@ html, body, #main, #map {
 .weather-panel {
     background-color: hsl(200, 100%, 85%);
     position: absolute;
-    left: 0;
+    /* left: 0;
     bottom: 0;
     height: 100%;
-    width: 100%;
+    width: 100%; */
 }
 
 /* .header-left {
