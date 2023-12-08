@@ -4,7 +4,7 @@ var WildRydes = window.WildRydes || {};
 WildRydes.map = WildRydes.map || {};
 let map;
 
-import axios from "axios"
+//import axios from "axios"
 
 export function getWeather(lat, lon, timezone) {
   return axios
