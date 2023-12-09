@@ -56,16 +56,16 @@ let map;
         console.log(pickupLocation);
         //  get the local weather, find nearby restaurants, movies
         // getWeather(pickupLocation, unicorn)
-        getWeather(
-            pickupLocation.latitude,
-            pickupLocation.longitude,
-            Intl.DateTimeFormat().resolvedOptions().timeZone
-          )
-            .then(renderWeather)
-            .catch(e => {
-              console.error(e)
-              alert("Error getting weather.")
-            });
+        // getWeather(
+        //     pickupLocation.latitude,
+        //     pickupLocation.longitude,
+        //     Intl.DateTimeFormat().resolvedOptions().timeZone
+        //   )
+        //     .then(renderWeather)
+        //     .catch(e => {
+        //       console.error(e)
+        //       alert("Error getting weather.")
+        //     });
 
         animateArrival(function animateCallback() {
             displayUpdate(unicorn.Name + ' has arrived. Giddy up!', unicorn.Color);
