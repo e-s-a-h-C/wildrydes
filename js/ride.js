@@ -1,5 +1,5 @@
 /*global WildRydes _config*/
-import { getWeather } from "./weather";
+import { getWeather } from "./weather.js";
 var WildRydes = window.WildRydes || {};
 WildRydes.map = WildRydes.map || {};
 let map;
@@ -65,7 +65,7 @@ let map;
             .catch(e => {
               console.error(e)
               alert("Error getting weather.")
-            })
+            });
 
         animateArrival(function animateCallback() {
             displayUpdate(unicorn.Name + ' has arrived. Giddy up!', unicorn.Color);
